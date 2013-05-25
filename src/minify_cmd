@@ -1,0 +1,8 @@
+gcc /usr/local/nodejs/threads_a_gogo/deps/minifier/src/minify.c -o /usr/local/nodejs/threads_a_gogo/deps/minifier/bin/minify
+
+
+cat /usr/local/nodejs/threads_a_gogo/src/object_toString.js | /usr/local/nodejs/threads_a_gogo/deps/minifier/bin/minify  object_toString_js > object_toString.js.c
+
+
+gcc /usr/local/nodejs/node_modules/tagg2/deps/minifier/src/minify.c -o /usr/local/nodejs/node_modules/tagg2/deps/minifier/bin/minify
+cat /usr/local/nodejs/node_modules/tagg2/src/path_resolve.js | /usr/local/nodejs/node_modules/tagg2/deps/minifier/bin/minify  path_resolve_js > path_resolve.js.c

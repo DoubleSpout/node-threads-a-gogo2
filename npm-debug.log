@@ -1,0 +1,25 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@1.2.18
+3 info using node@v0.10.6
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose publish [ '.' ]
+6 verbose read json F:\github\tagg2\package.json
+7 error Failed to parse json
+7 error Unexpected token d
+8 error File: F:\github\tagg2\package.json
+9 error Failed to parse package.json data.
+9 error package.json must be actual JSON, not just JavaScript.
+9 error
+9 error This is not a bug in npm.
+9 error Tell the package author to fix their package.json file. JSON.parse
+10 error System Windows_NT 6.2.9200
+11 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+12 error cwd F:\github\tagg2
+13 error node -v v0.10.6
+14 error npm -v 1.2.18
+15 error file F:\github\tagg2\package.json
+16 error code EJSONPARSE
+17 verbose exit [ 1, true ]
