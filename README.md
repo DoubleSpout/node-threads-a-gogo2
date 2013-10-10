@@ -40,8 +40,8 @@ To include the module in your project:
       
          }
        
-         var thread = tagg.create(th_func, function(err, res){
-         //var thread = tagg.create(th_func, {buffer:buf}, callback); may transfer buffer to thread.
+         var thread = tagg2.create(th_func, function(err, res){
+         //var thread = tagg2.create(th_func, {buffer:buf}, callback); may transfer buffer to thread.
          
          if(err) throw(err);//thread occur some errors
 
@@ -118,7 +118,7 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
   dirname:if you want to use require in thread, make sure set the correct dirname.you can also set it by created thread pool like this:
 
-     var threadp1 = tagg.create({poolsize:10,dirname:__dirname});//the thread in pool are all using the same __dirname
+     var threadp1 = tagg2.create({poolsize:10,dirname:__dirname});//the thread in pool are all using the same __dirname
 
   notice if fastthread is false,you have the real another node.js process,so you can do anything in it.
 
