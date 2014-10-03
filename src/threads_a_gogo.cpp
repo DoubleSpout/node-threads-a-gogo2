@@ -456,7 +456,6 @@ static void eventLoop (typeThread* thread) {
     Local<Array> _ntq= (v8::Array*) *threadObject->Get(String::NewSymbol("_ntq"));
    
 
-    double nextTickQueueLength= 0; //事件循环次数
     long int ctr= 0;
     
     //SetFatalErrorHandler(FatalErrorCB);
@@ -576,11 +575,7 @@ static void eventLoop (typeThread* thread) {
             }
 
             if (onError.HasCaught()){
-				nextTickQueueLength= 1;
 				onError.Reset(); //如果此次执行有错误，则清空
-			}
-			else{
-				 nextTickQueueLength= resultado->NumberValue();
 			}
 
      }//如果执行的任务
