@@ -86,17 +86,17 @@ To include the module in your project:
      });
    
 
-##API
+## API
 
-##tagg2
+## tagg2
 
   object, you can get tagg2 object from require('tagg2');
 
-##tagg2-thread and child process
+## tagg2-thread and child process
 
 tagg2 thread using pthread to create a worker thread or create a thread pool.To set options.fastthread=false, switch to child process model,you can using any nodejs api in it,make sure when the thread or child-process work finished, call the function thread.end([buf]),then the callback will be called,and the thread will return into the pool if you set a thread pool.
 
-###tagg2.create(...)
+### tagg2.create(...)
 
   return a thread object, the thread object has some methods and properties follow. see below.
 
@@ -108,7 +108,7 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
      ex4. tagg2.create(options) //to create a thread pool
     
-###options
+### options
       
   buffer:the buffer which you want to transfer to thread,default is false,create pool may not set it.
 
@@ -123,7 +123,7 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
   notice if fastthread is false,you have the real another node.js process,so you can do anything in it.
 
 
-###callback(err,res) 
+### callback(err,res) 
   
   every callback has the same parameter
 
@@ -131,17 +131,17 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
   the second argument is result,when thread.end(result) run in the thread, the result will transfer to main thread and execute the callback; thread.end method see below;
    
-###thread
+### thread
 
   object, you can get thread object from execute tagg2.create(...).
 
   if you set poolsize from tagg2.create(...),like tagg2.create({poolsize:10}),return thread pool object.
 
-###thread.id  --not support thread pool
+### thread.id  --not support thread pool
       
   the number mark the thread or child process.
 
-###thread.destory([true]])
+### thread.destory([true]])
 
   destory the thread or thread pool.make sure to execute it when you don't need the thread or pool any more.
 
@@ -151,7 +151,7 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
   notice: if using pool, once thread.destory called,the pool will destory but not the thread, thread when work finished the thread will auto return to the pool.
 	       
-###thread.pool(...)   --pool only
+### thread.pool(...)   --pool only
 
   put some job to the idle thread in the thread pool,if all the thread is working, the job will wait.
 	
@@ -163,43 +163,43 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
 	   ex4. thread.pool(thread_func, buffer, callback)
       
-###thread.totalThreads() --pool only
+### thread.totalThreads() --pool only
         
  returns the number of threads in this pool
 
      ex1. thread.totalThreads();
 	
-###thread.idleThreads() --pool only
+### thread.idleThreads() --pool only
       
   returns the number of threads in this pool that are currently idle (sleeping)
 
      ex1. thread.idleThreads();
 
-###thread.pendingJobs() --pool only
+### thread.pendingJobs() --pool only
           
   returns the number of jobs pending
 
      ex1. thread.pendingJobs()
 
-###in the thread or child-process
+### in the thread or child-process
 
   in every thread or child function,you can use some global objects below;
 
-###thread.id
+### thread.id
 
   the number mark the thread or child process.
   
-###thread.buffer   --buffer object
+### thread.buffer   --buffer object
         
  object,save the buffer object which has sent from main thread.
 
-###thread.buffer.toString()
+### thread.buffer.toString()
 
  return string; to get the buffer to utf-8 string
 
      ex1. thread.buffer.toString();
 
-###thread.nextTick(function)
+### thread.nextTick(function)
 
  Asynchronous do a job
 
@@ -209,19 +209,19 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
       });
 
-###thread.end([prarm])
+### thread.end([prarm])
 
      ex1.thread.end(); return undefined result to main thread callback;
 
      ex2.thread.end(reslut); return array or object or string to main thread callback;
       
-###console.log(param)
+### console.log(param)
       
   print the array or object or string or number etc. to stdio
 
      ex1. console.log("tagg2")       
 
-###require(filepath) 
+### require(filepath) 
 
  load a js file,you can use global object to read or write the Variable in the require file
 
@@ -233,15 +233,15 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
 
  notice. in the fast thread, there is not a really node.js runtime env,you can't require node.js module,so don't do that 'var fs = require("fs");'
 
-###global    --in thread's global object
+### global    --in thread's global object
 
   save the global object in the thread like Browser's window.you can set or get some value from it.every thread has it's own global.
 
-###__dirname
+### __dirname
         
   the nodejs dir path which filedirname you called create the thread.the pool used the same dirname when you create the pool.
   
-###user fastthread:false
+### user fastthread:false
 
   set fastthread to false will use the slow thread, it fact is a real nodejs process,tagg2 use of child.fork() to achieve
       
@@ -249,11 +249,11 @@ tagg2 thread using pthread to create a worker thread or create a thread pool.To 
       
   when you set fastthread false, you can use all the api of node.js,There is no limit,tagg2 also provided a process pool.
  
-##more
+## more
 	
   see /example , /benchmark and /test for more useful code. do test please run node ./test/main_test.js
 
-##future
+## future
   
   TAGG2 module has already in experiment,so you may not use it in production.TAGG2 will more stronger and feature-richer.
 
